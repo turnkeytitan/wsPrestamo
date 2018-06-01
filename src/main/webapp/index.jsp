@@ -31,11 +31,15 @@
 				agentsData.name = document.getElementById("name").value;
 				agentsData.amount = document.getElementById("amount").value;
 				consultarPrestamo(`${APIPrestamo}/RestApp/services/prestamo/validar`, JSON.stringify(agentsData),function (err, rs) {
-					console.log(rs);
-					document.getElementById("cell1").innerHTML = rs.socio;
-					document.getElementById("cell2").innerHTML = rs.cuota;
-					document.getElementById("cell3").innerHTML = rs.pago;
-					document.getElementById("cell4").innerHTML = rs.tasa;
+					if (rs!=undefined) {
+						document.getElementById("cell1").innerHTML = rs.socio;
+						document.getElementById("cell2").innerHTML = rs.cuota;
+						document.getElementById("cell3").innerHTML = rs.pago;
+						document.getElementById("cell4").innerHTML = rs.tasa;
+					} else {
+						alert('No hay socio disponible');
+					}
+					
 				})
 			});
 			document.getElementById("name").value = 'sam';

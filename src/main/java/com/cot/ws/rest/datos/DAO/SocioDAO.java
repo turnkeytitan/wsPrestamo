@@ -16,7 +16,7 @@ public class SocioDAO {
 		try {
 			socio = new ArrayList<Socio>();
 			Connection con = db.openConnection();
-			String sql = "select * from socio where monto_max>?";
+			String sql = "select * from socio where monto_max>=?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, price);
 			ResultSet rs = ps.executeQuery();
